@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>SVM Project</title>
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-4bw+/aepP/YC94hEpVNVgiZdgIC5+VKNBQNGCHeKRQN+PtmoHDEXuppvnDJzQIu9"
+      crossorigin="anonymous"
+    />
+    <link href="/static/css/style.css" rel="stylesheet" />
+  </head>
+  <body>
+    <!-- Main Component -->
+    <div class="body">
+      <div id="box_background1"></div>
+      <div
+        class="shadow-lg bg-white rounded"
+        style="
+          width: 70vw;
+          height: 80vh;
+          display: box;
+          position: fixed;
+          align-items: center;
+          justify-content: center;
+          padding: 80px;
+        "
+      >
+        <div>
+          <h1 class="fw-bold">Codeforces - Problem Classifier</h1>
+          <p class="fw-light">Problem Classifier based on difficulty level</p>
+        </div>
+        <div>
+          <form method="POST" action="/main/" class="form-group">
+            <div class="mb-3">
+              <label for="maxScore" class="form-label"
+                >Enter problem max Score</label
+              >
+              <input type="text" class="form-control" name="maxScore" />
+            </div>
+            <div class="mb-3">
+              <label for="noOfSolves" class="form-label"
+                >Enter problem nnumber of solves in contest</label
+              >
+              <input type="text" class="form-control" name="noOfSolves" />
+            </div>
+            <button type="submit" class="btn btn-primary">Submit</button>
+          </form>
+        </div>
+        <br />
+        <div>
+          <p class="fw-light">
+            Total Training Data Instances: {{ target }}
+          </p>
+
+          {% if (predicted == "Easy") %}
+          <div class="alert alert-primary" role="alert">{{predicted}}</div>
+          {% endif %} {% if (predicted == "Medium") %}
+          <div class="alert alert-success" role="alert">{{predicted}}</div>
+          {% endif %} {% if (predicted == "Hard") %}
+          <div class="alert alert-info" role="alert">{{predicted}}</div>
+          {% endif %} {% if (predicted == "Very Hard") %}
+          <div class="alert alert-danger" role="alert">{{predicted}}</div>
+          {% endif %}
+        </div>
+      </div>
+      <div id="box_background2"></div>
+    </div>
+    <script
+      src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.bundle.min.js"
+      integrity="sha384-HwwvtgBNo3bZJJLYd8oVXjrBZt8cqVSpeBNS5n7C8IVInixGAoxmnlMuBnhbgrkm"
+      crossorigin="anonymous"
+    ></script>
+  </body>
+</html>
