@@ -78,8 +78,9 @@ def mainPage():
 
         clf = clf.fit(X, y)
 
-        prediction = clf.predict([[testData[0], testData[1]]])
-        predicted = resolve(prediction[0])
+        prediction = clf.predict([[testingData[0][0], testingData[1][0]]])
+        predicted = resolve(int(prediction[0]))
+
     return render_template("main.html", predicted=predicted, target=len(trainingData[1]))
 
 
